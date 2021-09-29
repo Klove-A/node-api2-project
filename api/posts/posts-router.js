@@ -41,11 +41,25 @@ router.post("/", async (req, res) => {
     } else {
       const newPost = await Post.insert({ title, contents });
       console.log(newPost);
-      res.status(201).json(newPost);
+      res.status(201).json({
+        id: newPost,
+        title,
+        contents
+      });
     };
   } catch (err) {
     res.status(500).json({
       message: "There was an error while saving the post to the database"
+    });
+  };
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+
+  }catch (err) {
+    res.status(500).json({
+      message: "The post information could not be modified"
     });
   };
 });
